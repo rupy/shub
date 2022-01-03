@@ -213,6 +213,8 @@ def _get_poetry_requirements():
     # Adapted from poetry 1.0.0a2 poetry/utils/exporter.py
     lines = []
     for package in data['package']:
+        if 'dev' in package['category']:
+            continue
         source = package.get('source') or {}
         source_type = source.get('type')
         if source_type == 'git':
